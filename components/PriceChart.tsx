@@ -27,7 +27,6 @@ import {
   Legend,
 } from "recharts";
 import { useTheme } from "next-themes";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 interface Token {
   id: string;

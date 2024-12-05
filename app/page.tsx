@@ -1,4 +1,5 @@
 import PriceChart from "@/components/PriceChart";
+import { Swap } from "@/components/Swap";
 
 export default function Home() {
   return (
@@ -9,7 +10,8 @@ export default function Home() {
           {/* <OrderBook/>  */}
         </div>
       </div>
-      <div>{/* swap */}</div>
+      <Swap />
+      <div></div>
     </div>
   );
 }

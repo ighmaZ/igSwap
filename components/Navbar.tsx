@@ -60,15 +60,24 @@ export function Navbar() {
         <nav className="hidden md:flex items-center gap-4">
           {walletAddress ? (
             <div className="relative">
-              <button
-                onClick={() => setIsWalletMenuOpen((prev) => !prev)}
-                className="px-3 py-2 rounded-md flex items-center gap-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-200 shadow-sm"
-              >
-                <span className="text-sm font-medium text-gray-900 dark:text-gray-200">
-                  {`${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`}
+              <div className="relative flex items-center gap-2">
+                <span className="text-sm text-gray-600">
+                  Balance: {walletBalance} ETH
                 </span>
-                <Wallet className="h-4 w-4 text-gray-600 dark:text-gray-300" />
-              </button>
+
+                <button
+                  onClick={() => setIsWalletMenuOpen((prev) => !prev)}
+                  className="px-3 py-2 rounded-md flex items-center gap-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-200 shadow-sm"
+                >
+                  <span className="text-sm font-medium text-gray-900 dark:text-gray-200">
+                    {`${walletAddress.slice(0, 6)}...${walletAddress.slice(
+                      -4
+                    )}`}
+                  </span>
+                  <Wallet className="h-4 w-4 text-gray-600 dark:text-gray-300" />
+                </button>
+              </div>
+
               {isWalletMenuOpen && (
                 <div className="absolute w-full mt-2 rounded-lg shadow-lg bg-white dark:bg-gray-800 border dark:border-gray-700">
                   <button
