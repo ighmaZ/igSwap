@@ -56,7 +56,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchData(selectedToken.id);
-  }, [selectedToken]);
+  }, [selectedToken.id]);
 
   async function fetchData(tokenId: string) {
     setLoading(true);
