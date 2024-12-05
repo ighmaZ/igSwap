@@ -14,7 +14,7 @@ import {
   ledgerWallet,
   rainbowWallet,
 } from "@rainbow-me/rainbowkit/wallets";
-import { mainnet } from "wagmi/chains";
+import { base } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiProvider, createConfig, http } from "wagmi";
 
@@ -25,7 +25,7 @@ const connectors = connectorsForWallets(
   [
     {
       groupName: "Recommended Wallet",
-      wallets: [coinbaseWallet],
+      wallets: [metaMaskWallet],
     },
     {
       groupName: "Other",
@@ -44,12 +44,16 @@ const connectors = connectorsForWallets(
   }
 );
 const config = createConfig({
-  chains: [mainnet],
+  chains: [base],
   // turn off injected provider discovery
   multiInjectedProviderDiscovery: false,
   connectors,
   ssr: true,
-  transports: { [mainnet.id]: http() },
+  transports: {
+    [base.id]: http(
+      "https://base-mainnet.g.alchemy.com/v2/YeVaFYwgFeu6JmC2z8V20or37yybpVZQ"
+    ),
+  },
 });
 
 const queryClient = new QueryClient();
@@ -63,7 +67,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
     >
       <WagmiProvider config={config}>
         <QueryClientProvider client={queryClient}>
-          <RainbowKitProvider>{children}</RainbowKitProvider>
+          <RainbowKitProvider modalSize="compact">
+            {children}
+          </RainbowKitProvider>
         </QueryClientProvider>
       </WagmiProvider>
     </ThemeProvider>

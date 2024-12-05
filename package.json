@@ -20,7 +20,7 @@
     "recharts": "^2.14.1",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
-    "viem": "2.x",
+    "viem": "^2.21.54",
     "wagmi": "^2.13.3"
   },
   "devDependencies": {

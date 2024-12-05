@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { ModeToggle } from "./ui/ModeToggle";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,8 +27,7 @@ export function Navbar() {
 
         {/* Navigation Items - Desktop */}
         <nav className="hidden md:flex items-center gap-4 ">
-          <button className="text-sm">connect wallet</button>
-
+          <ConnectButton />
           <ModeToggle />
         </nav>
 
