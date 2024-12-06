@@ -8,8 +8,8 @@ export default function Home() {
     <div className="max-w-screen-xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="space-y-8 mt-5">
-          <OrderBook symbol="BTCUSDT" />
           <PriceChart />
+          <OrderBook symbol="BTCUSDT" />
         </div>
         <div className="space-y-8">
           <div className="mt-5">

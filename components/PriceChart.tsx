@@ -45,7 +45,6 @@ const FAMOUS_TOKENS: Token[] = [
   { id: "ethereum", symbol: "eth", name: "Ethereum" },
   { id: "cardano", symbol: "ada", name: "Cardano" },
   { id: "solana", symbol: "sol", name: "Solana" },
-  { id: "ripple", symbol: "xrp", name: "XRP" },
 ];
 
 export default function Home() {
