@@ -1,3 +1,4 @@
+import CryptoPriceTracker from "@/components/CryptoPriceTracker";
 import { OrderBook } from "@/components/OrderBook";
 import PriceChart from "@/components/PriceChart";
 import { Swap } from "@/components/Swap";
@@ -6,7 +7,8 @@ export default function Home() {
   return (
     <div className="max-w-screen-xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="space-y-8">
+        <div className="space-y-8 mt-5">
+          <OrderBook symbol="BTCUSDT" />
           <PriceChart />
         </div>
         <div className="space-y-8">
@@ -14,7 +16,7 @@ export default function Home() {
             <Swap />
           </div>
           <div className="flex justify-center w-full">
-            <OrderBook symbol="BTCUSDT" />
+            <CryptoPriceTracker />
           </div>
         </div>
       </div>
