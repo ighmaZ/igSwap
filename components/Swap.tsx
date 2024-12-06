@@ -10,6 +10,7 @@ import { AlertDescription } from "./ui/Alert";
 import { Alert } from "./ui/Alert";
 import { TOKENS } from "@/lib/config/token";
 import { TokenSelect } from "./ui/TokenSelect";
+import { SwapConfirmation } from "./ui/SwapConfirmation";
 
 export function Swap() {
   const [amount, setAmount] = useState("");
@@ -47,8 +48,10 @@ export function Swap() {
 
   const inputAmount = Number(amount) || 0;
   const outputAmount = inputAmount * (fromToken.price / toToken.price);
+  const expectedAmount = 0.0; // will be changed
 
-  const slippage = 0.2; // change
+  const slippageThreshold = 0.01; // 1%
+  const slippage = Math.random() * 2; // Random slippage between 0 and 2 (200%)
 
   const swapDetails = {
     inputAmount,
@@ -65,11 +68,13 @@ export function Swap() {
         setError("Insufficient balance");
       } else if (Number(value) > fromToken.balance * 0.7) {
         setError("High price impact warning");
+      } else if (slippage > 1) {
+        setError("Slippage exceeds 1%");
       } else {
         setError(null);
       }
     },
-    [fromToken.balance]
+    [fromToken.balance, slippage]
   );
 
   return (
@@ -153,11 +158,11 @@ export function Swap() {
         </Button>
       </div>
 
-      {/* <SwapConfirmation
+      <SwapConfirmation
         open={confirmationOpen}
         onOpenChange={setConfirmationOpen}
         details={swapDetails}
-      /> */}
+      />
     </Card>
   );
 }
