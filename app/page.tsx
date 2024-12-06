@@ -1,3 +1,4 @@
+import { OrderBook } from "@/components/OrderBook";
 import PriceChart from "@/components/PriceChart";
 
 export default function Home() {
@@ -6,7 +7,7 @@ export default function Home() {
       <div className=" grid grid-cols-1 lg:grid-cols-[1fr,400px] gap-8">
         <div className="space-y-8">
           <PriceChart />
-          {/* <OrderBook/>  */}
+          <OrderBook symbol="BTCUSDT" />
         </div>
       </div>
       {/* <Swap /> */}

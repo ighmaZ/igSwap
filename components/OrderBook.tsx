@@ -1,3 +1,5 @@
+"use client";
+
 import { useOrderBook } from "../hooks/useOrderBook";
 import { calculateMetrics } from "../utils/metrics";
 import { ArrowUpIcon, ArrowDownIcon } from "lucide-react";
