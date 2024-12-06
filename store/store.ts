@@ -6,6 +6,8 @@ interface TokenStore {
   toToken: Token;
   setFromToken: (token: Token) => void;
   setToToken: (token: Token) => void;
+  walletAddress: string;
+  setWalletAddress: (address: string) => void;
 }
 
 const useTokenStore = create<TokenStore>((set) => ({
@@ -13,6 +15,9 @@ const useTokenStore = create<TokenStore>((set) => ({
   toToken: TOKENS.find((t) => t.symbol === "USDC") || TOKENS[1], // Provide a default value
   setFromToken: (token: Token) => set(() => ({ fromToken: token })),
   setToToken: (token: Token) => set(() => ({ toToken: token })),
+  walletAddress: "", // Initialize walletAddress // Implement setWalletBalance
+  setWalletAddress: (address: string) =>
+    set(() => ({ walletAddress: address })),
 }));
 
 export default useTokenStore;

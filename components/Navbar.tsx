@@ -4,12 +4,15 @@ import { useState } from "react";
 import { Menu, Wallet, X, Cross } from "lucide-react";
 import { ModeToggle } from "./ui/ModeToggle";
 import { ethers } from "ethers";
+import useTokenStore from "@/store/store";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [walletBalance, setWalletBalance] = useState("0");
-  const [walletAddress, setWalletAddress] = useState("");
+  // const [walletAddress, setWalletAddress] = useState("");
   const [isWalletMenuOpen, setIsWalletMenuOpen] = useState(false);
+
+  const { walletAddress, setWalletAddress } = useTokenStore();
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 

@@ -18,7 +18,8 @@ export function Swap() {
   const [error, setError] = useState<string | null>(null);
   const [confirmationOpen, setConfirmationOpen] = useState(false);
 
-  const { fromToken, toToken, setFromToken, setToToken } = useTokenStore();
+  const { fromToken, toToken, setFromToken, setToToken, walletAddress } =
+    useTokenStore();
 
   const handleSwap = useCallback(() => {
     if (!error && amount) {
@@ -144,14 +145,20 @@ export function Swap() {
           </div>
         </div>
 
-        <Button
-          className="w-full"
-          size="lg"
-          disabled={!amount || !!error}
-          onClick={handleSwap}
-        >
-          {error || "Swap"}
-        </Button>
+        {walletAddress ? (
+          <Button
+            className="w-full"
+            size="lg"
+            disabled={!amount || !!error}
+            onClick={handleSwap}
+          >
+            {error || "Swap"}
+          </Button>
+        ) : (
+          <div className="text-red-500 text-lg text-bold text-center pt-5">
+            CONNECT TO A WALLET FIRST!
+          </div>
+        )}
       </div>
 
       <SwapConfirmation

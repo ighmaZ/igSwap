@@ -91,12 +91,12 @@ export default function Home() {
   return (
     <Card className="p-4 mt-5">
       <CardHeader>
-        <div className="flex justify-between items-center">
-          <div>
-            <CardTitle className="text-2xl">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
+          <div className="md:w-2/3">
+            <CardTitle className="text-2xl md:text-3xl lg:text-4xl mb-2">
               {selectedToken.name} Price and Impact
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="text-sm md:text-base">
               30-day price history and estimated trade impact
             </CardDescription>
           </div>
@@ -162,7 +162,6 @@ export default function Home() {
                   stroke="#8884d8"
                   strokeWidth={2}
                   dot={false}
-                  name="Price (USD)"
                 />
                 <Line
                   yAxisId="right"
