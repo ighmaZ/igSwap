@@ -1,3 +1,6 @@
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
 export function calculateMetrics(orderBook: {
   bids: { price: number; amount: number }[];
   asks: { price: number; amount: number }[];
@@ -16,4 +19,8 @@ export function calculateMetrics(orderBook: {
     priceImpact: priceImpact.toFixed(4),
     fees: fees.toFixed(2),
   };
+}
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
 }

@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-select": "^2.1.2",
     "@web3-react/core": "^8.2.3",
+    "class-variance-authority": "^0.7.1",
     "ethers": "5",
     "lucide-react": "^0.464.0",
     "next": "15.0.3",

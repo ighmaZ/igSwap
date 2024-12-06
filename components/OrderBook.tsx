@@ -22,7 +22,7 @@ export function OrderBook({ symbol }: OrderBookProps) {
   const metrics = calculateMetrics(orderBook);
 
   return (
-    <div className="grid gap-4">
+    <div className="grid gap-4 ">
       <Card>
         <CardHeader>
           <CardTitle>Order Book: {symbol}</CardTitle>

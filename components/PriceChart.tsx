@@ -90,101 +90,95 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <div className="container mx-auto p-4 mt-5">
-        <Card className="w-full">
-          <CardHeader>
-            <div className="flex justify-between items-center">
-              <div>
-                <CardTitle className="text-2xl">
-                  {selectedToken.name} Price and Impact
-                </CardTitle>
-                <CardDescription>
-                  30-day price history and estimated trade impact
-                </CardDescription>
-              </div>
-              <Select
-                value={selectedToken.id}
-                onValueChange={(value) =>
-                  setSelectedToken(
-                    FAMOUS_TOKENS.find((t) => t.id === value) ||
-                      FAMOUS_TOKENS[0]
-                  )
-                }
-              >
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Select a token" />
-                </SelectTrigger>
-                <SelectContent>
-                  {FAMOUS_TOKENS.map((token) => (
-                    <SelectItem key={token.id} value={token.id}>
-                      {token.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-          </CardHeader>
-          <CardContent>
-            {loading ? (
-              <div className="h-[400px] flex items-center justify-center">
-                <p>Loading...</p>
-              </div>
-            ) : (
-              <div className="h-[400px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={chartData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis
-                      dataKey="date"
-                      tick={{ fill: theme === "dark" ? "#f3f4f6" : "#374151" }}
-                    />
-                    <YAxis
-                      yAxisId="left"
-                      tick={{ fill: theme === "dark" ? "#f3f4f6" : "#374151" }}
-                    />
-                    <YAxis
-                      yAxisId="right"
-                      orientation="right"
-                      tick={{ fill: theme === "dark" ? "#f3f4f6" : "#374151" }}
-                    />
-                    <Tooltip
-                      contentStyle={{
-                        backgroundColor:
-                          theme === "dark" ? "#374151" : "#f3f4f6",
-                        border: "none",
-                        borderRadius: "8px",
-                      }}
-                      labelStyle={{
-                        color: theme === "dark" ? "#f3f4f6" : "#374151",
-                      }}
-                    />
-                    <Legend />
-                    <Line
-                      yAxisId="left"
-                      type="monotone"
-                      dataKey="price"
-                      stroke="#8884d8"
-                      strokeWidth={2}
-                      dot={false}
-                      name="Price (USD)"
-                    />
-                    <Line
-                      yAxisId="right"
-                      type="monotone"
-                      dataKey="impact"
-                      stroke="#82ca9d"
-                      strokeWidth={2}
-                      dot={false}
-                      name="Estimated Impact (%)"
-                    />
-                  </LineChart>
-                </ResponsiveContainer>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+    <Card className="p-4 mt-5">
+      <CardHeader>
+        <div className="flex justify-between items-center">
+          <div>
+            <CardTitle className="text-2xl">
+              {selectedToken.name} Price and Impact
+            </CardTitle>
+            <CardDescription>
+              30-day price history and estimated trade impact
+            </CardDescription>
+          </div>
+          <Select
+            value={selectedToken.id}
+            onValueChange={(value) =>
+              setSelectedToken(
+                FAMOUS_TOKENS.find((t) => t.id === value) || FAMOUS_TOKENS[0]
+              )
+            }
+          >
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Select a token" />
+            </SelectTrigger>
+            <SelectContent>
+              {FAMOUS_TOKENS.map((token) => (
+                <SelectItem key={token.id} value={token.id}>
+                  {token.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      </CardHeader>
+      <CardContent>
+        {loading ? (
+          <div className="h-[400px] flex items-center justify-center">
+            <p>Loading...</p>
+          </div>
+        ) : (
+          <div className="h-[400px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={chartData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis
+                  dataKey="date"
+                  tick={{ fill: theme === "dark" ? "#f3f4f6" : "#374151" }}
+                />
+                <YAxis
+                  yAxisId="left"
+                  tick={{ fill: theme === "dark" ? "#f3f4f6" : "#374151" }}
+                />
+                <YAxis
+                  yAxisId="right"
+                  orientation="right"
+                  tick={{ fill: theme === "dark" ? "#f3f4f6" : "#374151" }}
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: theme === "dark" ? "#374151" : "#f3f4f6",
+                    border: "none",
+                    borderRadius: "8px",
+                  }}
+                  labelStyle={{
+                    color: theme === "dark" ? "#f3f4f6" : "#374151",
+                  }}
+                />
+                <Legend />
+                <Line
+                  yAxisId="left"
+                  type="monotone"
+                  dataKey="price"
+                  stroke="#8884d8"
+                  strokeWidth={2}
+                  dot={false}
+                  name="Price (USD)"
+                />
+                <Line
+                  yAxisId="right"
+                  type="monotone"
+                  dataKey="impact"
+                  stroke="#82ca9d"
+                  strokeWidth={2}
+                  dot={false}
+                  name="Estimated Impact (%)"
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        )}
+      </CardContent>
+    </Card>
   );
 }
