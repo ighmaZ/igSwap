@@ -11,18 +11,14 @@ import { Alert } from "./ui/Alert";
 import { TOKENS } from "@/lib/config/token";
 import { TokenSelect } from "./ui/TokenSelect";
 import { SwapConfirmation } from "./ui/SwapConfirmation";
+import useTokenStore from "@/store/store";
 
 export function Swap() {
   const [amount, setAmount] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [confirmationOpen, setConfirmationOpen] = useState(false);
 
-  const [fromToken, setFromToken] = useState(
-    TOKENS.find((t) => t.symbol === "ETH")!
-  );
-  const [toToken, setToToken] = useState(
-    TOKENS.find((t) => t.symbol === "USDC")!
-  );
+  const { fromToken, toToken, setFromToken, setToToken } = useTokenStore();
 
   const handleSwap = useCallback(() => {
     if (!error && amount) {

@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/Button";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import type { SwapDetails } from "@/lib/types";
+import useTokenStore from "@/store/store";
 
 export function formatCurrency(value: number): string {
   return new Intl.NumberFormat("en-US", {
@@ -33,6 +34,8 @@ export function SwapConfirmation({
   const [status, setStatus] = useState<
     "idle" | "pending" | "success" | "error"
   >("idle");
+
+  const { fromToken, toToken, setFromToken, setToToken } = useTokenStore();
 
   const handleConfirm = async () => {
     setStatus("pending");
@@ -57,7 +60,9 @@ export function SwapConfirmation({
           <div className="rounded-lg bg-muted p-4 space-y-2">
             <div className="flex justify-between">
               <span className="text-muted-foreground">You pay</span>
-              <span className="font-medium">{details.inputAmount} ETH</span>
+              <span className="font-medium">
+                {details.inputAmount} {fromToken.symbol}
+              </span>
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">You receive</span>
@@ -69,7 +74,9 @@ export function SwapConfirmation({
             <div className="flex justify-between"></div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">Minimum Received</span>
-              <span>{details.minimumReceived} USDT</span>
+              <span>
+                {details.minimumReceived} {toToken.symbol}
+              </span>
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">Fee</span>
