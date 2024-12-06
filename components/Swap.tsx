@@ -47,7 +47,7 @@ export function Swap() {
   const expectedAmount = 0.0; // will be changed
 
   const slippageThreshold = 0.01; // 1%
-  const slippage = Math.random() * 2; // Random slippage between 0 and 2 (200%)
+  const slippage = Math.random() * 1; // Random slippage between 0 and 2 (200%)
 
   const swapDetails = {
     inputAmount,

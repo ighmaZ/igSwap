@@ -42,7 +42,10 @@ export function SwapConfirmation({
     // Simulate transaction
     setTimeout(() => {
       setStatus("success");
-      setTimeout(() => onOpenChange(false), 2000);
+      setTimeout(() => {
+        setStatus("idle");
+        onOpenChange(false);
+      }, 2000);
     }, 2000);
   };
 
@@ -83,7 +86,7 @@ export function SwapConfirmation({
               <span>${formatCurrency(details.fee)}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-muted-foreground">Network Fee</span>
+              <span className="text-muted-foreground">Gas Fee</span>
               <span>${formatCurrency(details.gasFee)}</span>
             </div>
           </div>
