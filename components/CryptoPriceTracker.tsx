@@ -1,9 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
-import { Sun, Moon } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 
 interface CoinData {
@@ -17,7 +15,6 @@ interface CoinData {
 
 export default function CryptoPriceTracker() {
   const [coins, setCoins] = useState<CoinData[]>([]);
-  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const fetchCoins = async () => {
