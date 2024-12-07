@@ -8,7 +8,6 @@ import { AlertCircle } from "lucide-react";
 import { Button } from "./ui/Button";
 import { AlertDescription } from "./ui/Alert";
 import { Alert } from "./ui/Alert";
-import { TOKENS } from "@/lib/config/token";
 import { TokenSelect } from "./ui/TokenSelect";
 import { SwapConfirmation } from "./ui/SwapConfirmation";
 import useTokenStore from "@/store/store";
@@ -45,9 +44,7 @@ export function Swap() {
 
   const inputAmount = Number(amount) || 0;
   const outputAmount = inputAmount * (fromToken.price / toToken.price);
-  const expectedAmount = 0.0; // will be changed
 
-  const slippageThreshold = 0.01; // 1%
   const slippage = Math.random() * 1; // Random slippage between 0 and 2 (200%)
 
   const swapDetails = {

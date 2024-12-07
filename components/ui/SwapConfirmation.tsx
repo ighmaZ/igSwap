@@ -35,7 +35,7 @@ export function SwapConfirmation({
     "idle" | "pending" | "success" | "error"
   >("idle");
 
-  const { fromToken, toToken, setFromToken, setToToken } = useTokenStore();
+  const { fromToken, toToken } = useTokenStore();
 
   const handleConfirm = async () => {
     setStatus("pending");
