@@ -2,9 +2,8 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, Wallet, X, Cross } from "lucide-react";
+import { Menu, Wallet, X } from "lucide-react";
 import { ModeToggle } from "./ui/ModeToggle";
-import { ethers } from "ethers";
 import useTokenStore from "@/store/store";
 
 export function Navbar() {
